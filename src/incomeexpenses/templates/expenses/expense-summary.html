@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Expenses Summary</h1>
+{% include 'partials/messages.html'%}
+<div class="row">
+    <div class="col-md-10">
+      <nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Expenses Summary</a></li>
+        <li class="breadcrumb-item">Summary</li>
+    </ol>
+</nav>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-primary" href="#">Back</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-8"></div>
+    <div class="col-4">
+<!--        <form action="">-->
+<!--        <div class="form-group">-->
+<!--            <input type="text" name="" id="searchField" class="form-control" placeholder="Search">-->
+<!--        </div>-->
+<!--        </form>-->
+    </div>
+</div>
+</div>
+<div class="container">
+<canvas id="myChart" width="400" height="400"></canvas>
+</div>
+<script src="{% static 'js/stats.js' %}">
+</script>
+{% endblock %}

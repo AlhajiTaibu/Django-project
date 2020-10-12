@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Edit Expenses</h2>
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Expenses</a></li>
+        <li class="breadcrumb-item">Edit Expenses</li>
+    </ol>
+</nav>
+<div class="card">
+    <div class="card-body">
+        <form action="{% url 'edit_expenses' expense.id %}" method="post">
+            {% csrf_token %}
+            {% include 'partials/messages.html'%}
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" name="amount" class="form-control form-control-sm" value="{{expense.amount}}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" name="description" id="" class="form-control form-control-sm" value="{{expense.description}}">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select name="category"  class="form-control form-control-sm">
+                    <option value="{{expense.category}}" selected>{{expense.category}}</option>
+                    {% for category in categories %}
+                    <option value="{{category.name}}">{{category.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" name="expense-date"  class="form-control form-control-sm" value="{{expense.date|date:'Y-m-d'}}">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
